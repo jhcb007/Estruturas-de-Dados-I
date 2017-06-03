@@ -53,3 +53,8 @@ class Tree:
     def maisesq(self):
         if self.raiz != None:
             return self.raiz.maisesq()
+
+    def retonaPai(self, valor):
+        if self.raiz != None:
+            return self.raiz.retonaPai(valor)
+

@@ -4,21 +4,45 @@ class No:
         self.esq = None
         self.dir = None
 
+    def retonaPai(self, valor):
+        if valor == self.info:
+            return True
+        elif valor <= self.info:
+            if self.esq == None:
+                return self.info
+            else:
+                aux = self.esq.retonaPai(valor)
+                if aux != False:
+                    return self.info
+                else:
+                    return False
+        else:
+            if self.dir == None:
+                return False
+            else:
+                aux = self.dir.retonaPai(valor)
+                if aux != False:
+                    return self.info
+                else:
+                    return False
+         #Faltou a volta recursiva :(
+         #Se for possível enviar a resposta antes da prova eu agradeço
+
     def insere(self, valor):
         if valor <= self.info:
             if self.esq == None:
                 self.esq = No(valor)
-                print("*")
+                # print("*")
             else:
                 self.esq.insere(valor)
-                print("+")
+                # print("+")
         else:
             if self.dir == None:
                 self.dir = No(valor)
-                print("-")
+                # print("-")
             else:
                 self.dir.insere(valor)
-                print("#")
+                # print("#")
 
     def busca(self, valor):
         if valor == self.info:
