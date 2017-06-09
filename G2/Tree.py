@@ -1,4 +1,4 @@
-from No import No
+from G2.No import No
 
 
 class Tree:
@@ -54,7 +54,17 @@ class Tree:
         if self.raiz != None:
             return self.raiz.maisesq()
 
-    def retonaPai(self, valor):
+    def retornaPai(self, valor):
         if self.raiz != None:
-            return self.raiz.retonaPai(valor)
+            if self.raiz.info == valor:
+                return None
+            else:
+                return self.raiz.retornaPai(valor)
 
+    def retornaMenorQue(self, valor):
+        if self.raiz != None:
+            return self.raiz.retornaMenorQue(valor)
+
+    def retornaIrmao(self, valor):
+        if self.raiz != None:
+            return self.raiz.retornaIrmao(valor)

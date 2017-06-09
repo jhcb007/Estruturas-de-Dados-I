@@ -1,4 +1,4 @@
-import Tree
+from G2 import Tree
 
 t1 = Tree.Tree()
 #t1.insere(4)
@@ -19,4 +19,4 @@ t1.insere(3)
 t1.insere(5)
 t1.insere(6)
 print('Pai')
-print(t1.retonaPai(5))
+print(t1.retornaPai(5))

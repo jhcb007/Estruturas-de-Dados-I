@@ -4,30 +4,6 @@ class No:
         self.esq = None
         self.dir = None
 
-    def retonaPai(self, valor):
-        if valor == self.info:
-            return True
-        elif valor <= self.info:
-            if self.esq == None:
-                return self.info
-            else:
-                aux = self.esq.retonaPai(valor)
-                if aux != False:
-                    return self.info
-                else:
-                    return False
-        else:
-            if self.dir == None:
-                return False
-            else:
-                aux = self.dir.retonaPai(valor)
-                if aux != False:
-                    return self.info
-                else:
-                    return False
-         #Faltou a volta recursiva :(
-         #Se for possível enviar a resposta antes da prova eu agradeço
-
     def insere(self, valor):
         if valor <= self.info:
             if self.esq == None:
@@ -151,3 +127,65 @@ class No:
             return self.esq.maisesq()
         else:
             return self.info
+
+    def retornaPai(self, valor):
+        if valor == self.info:
+            return True
+        elif valor <= self.info:
+            if self.esq == None:
+                return None
+            else:
+                aux = self.esq.retornaPai(valor)
+                if aux == True:
+                    return self.info
+                else:
+                    return aux
+        else:
+            if self.dir == None:
+                return None
+            else:
+                aux = self.dir.retornaPai(valor)
+                if aux == True:
+                    return self.info
+                else:
+                    return aux
+
+    def retornaMenorQue(self, valor):
+        if self.info == valor:
+            if self.esq != None:
+                return self.esq.info
+            return True
+        elif valor <= self.info:
+            if self.esq != None:
+                aux = self.esq.retornaMenorQue(valor)
+                if aux == True and (valor >= self.info):
+                    return self.info
+                return aux
+            return None
+        else:
+            if self.dir != None:
+                aux = self.dir.retornaMenorQue(valor)
+                if aux == True and (valor >= self.info):
+                    return self.info
+                return aux
+            return None
+
+    def retornaIrmao(self, valor):
+        if self.info == valor:
+            return True
+        elif valor <= self.info:
+            if self.esq != None:
+                aux = self.esq.retornaIrmao(valor)
+                if aux == True and self.dir != None:
+                    return self.dir.info
+                return aux
+            else:
+                return None
+        else:
+            if self.dir != None:
+                aux = self.dir.retornaIrmao(valor)
+                if aux == True and self.esq != None:
+                    return self.esq.info
+                return aux
+            else:
+                return None
